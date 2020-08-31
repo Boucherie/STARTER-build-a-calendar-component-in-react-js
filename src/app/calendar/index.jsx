@@ -4,7 +4,7 @@ import "./styles.css";
 import moment from "moment";
 
 import buildCalendar from "./build";
-import dayStyles from "./styles"
+import dayStyles, { beforeToday } from "./styles"
 import Header from "./header"
 
 
@@ -28,7 +28,7 @@ return (
           {week.map((day) => (
           <div 
             className="day"
-            onClick={() => setValue(day)}>
+            onClick={() => setValue(day) && !beforeToday(day)}>
               <div
               className={dayStyles(day, value)}
               >{day.format("D").toString()}
